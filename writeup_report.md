@@ -46,12 +46,11 @@ The center image is used for the car to run on the center of the track. The righ
 
 Without correction angle, most of steering angles are zero as below figure shows. X-axis is range of steering angle in radian and y-axis is count of angles in the range of angle. 
 
-![img3](https://github.com/kazsky/UDACITY_Behavioral_Cloning/blob/masater/img/count_per_angle_range_no_augmentation.png)
-
+![img3](https://github.com/kazsky/UDACITY_Behavioral_Cloning/blob/master/img/count_per_angle_range_no_augmentation.png)
 
 With correction angle, most of steering angles are still around zero, but distribution becomes better.
 
-![img4](https://github.com/kazsky/UDACITY_Behavioral_Cloning/blob/masater/img/count_per_angle_range_augmented.png)
+![img4](https://github.com/kazsky/UDACITY_Behavioral_Cloning/blob/master/img/count_per_angle_range_augmented.png)
 
 #### Crop
 
