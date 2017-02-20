@@ -48,7 +48,7 @@ Without correction angle, most of steering angles are zero as below figure shows
 
 ![img3](https://github.com/kazsky/UDACITY_Behavioral_Cloning/blob/master/img/count_per_angle_range_no_augmentation.png)
 
-With correction angle, most of steering angles are still around zero, but distribution becomes better.
+I concatenated original data and corrected angle data, and most of steering angles are still around zero, but distribution becomes better.
 
 ![img4](https://github.com/kazsky/UDACITY_Behavioral_Cloning/blob/master/img/count_per_angle_range_augmented.png)
 
