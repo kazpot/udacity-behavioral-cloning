@@ -34,9 +34,13 @@ The output is flattened after final convolution and fed into the fully connected
 I firtst record the training data while driving around the track, but I mainly used the data provided from UDACITY. The sample images are captured from center, right, and left camera. 
 Just input raw images to the network didn't work. The network didn't converge to good solution. I had to preprocess the image. 
 
+![img1](https://github.com/kazsky/UDACITY_Behavioral_Cloning/blob/master/img/original_img.png)
+
 #### Images from multiple cameras
 
 The center image is used for the car to run on the center of the track. The right and left images are used for recovery data after angle correction. I added a collection angle of 0.07 to the left image and -0.07 to the right image.
+
+![img2](https://github.com/kazsky/UDACITY_Behavioral_Cloning/blob/master/img/sample.png)
 
 #### Crop
 
