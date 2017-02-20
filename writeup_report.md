@@ -28,7 +28,6 @@ ELU activation is used for each convlutional and fully connected layer.
 
 The output is flattened after final convolution and fed into the fully connected layers. The festureas are reduced and the final output is made by final layer.  
 
-Architecture in Nvidia paper:
 ![nvidia](https://github.com/kazsky/UDACITY_Behavioral_Cloning/blob/master/img/nvidia_paper.png)
 
 
@@ -44,6 +43,15 @@ Just input raw images to the network didn't work. The network didn't converge to
 The center image is used for the car to run on the center of the track. The right and left images are used for recovery data after angle correction. I added a collection angle of 0.07 to the left image and -0.07 to the right image.
 
 ![img2](https://github.com/kazsky/UDACITY_Behavioral_Cloning/blob/master/img/sample.png)
+
+Without correction angle, most of steering angles are zero as below figure shows. X-axis is range of steering angle in radian and y-axis is count of angles in the range of angle. 
+
+![img3](https://github.com/kazsky/UDACITY_Behavioral_Cloning/blob/masater/img/count_per_angle_range_no_augmentation.png)
+
+
+With correction angle, most of steering angles are still around zero, but distribution becomes better.
+
+![img4](https://github.com/kazsky/UDACITY_Behavioral_Cloning/blob/masater/img/count_per_angle_range_augmented.png)
 
 #### Crop
 
