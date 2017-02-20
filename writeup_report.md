@@ -28,10 +28,13 @@ ELU activation is used for each convlutional and fully connected layer.
 
 The output is flattened after final convolution and fed into the fully connected layers. The festureas are reduced and the final output is made by final layer.  
 
+Architecture in Nvidia paper:
+![nvidia](https://github.com/kazsky/UDACITY_Behavioral_Cloning/blob/master/img/nvidia_paper.png)
+
 
 ###Data Collection
 
-I firtst record the training data while driving around the track, but I mainly used the data provided from UDACITY. The sample images are captured from center, right, and left camera. 
+I first recorded the training data while driving around the track, but I only used the data provided from UDACITY. The sample images are captured from center, right, and left camera. 
 Just input raw images to the network didn't work. The network didn't converge to good solution. I had to preprocess the image. 
 
 ![img1](https://github.com/kazsky/UDACITY_Behavioral_Cloning/blob/master/img/original_img.png)
@@ -44,7 +47,7 @@ The center image is used for the car to run on the center of the track. The righ
 
 #### Crop
 
-Irrelevant portions like sky and tree can be cropped for efficient training.  
+Irrelevant portions like sky and tree were cropped for reducing amount of informatoin and efficient training.  
 
 #### Resize
 
@@ -52,14 +55,33 @@ Because reducing the size of image doesn't affect traininng process, I reduced i
 
 #### Normalization
 
-The image has 0-255 RGB value in each pixel. This is a big value for network, so it is normalized by keras.layers.normalization.BatchNormalization. 
+The image has RGB(0-255) value in each pixel. This is a big value for network, so I normalized RGB values using keras.layers.normalization.BatchNormalization. 
 
 #### Flip
 
-I rondomly 50% chosed to flip image along y-axis and invert the steering angle. This can reduce the bias in the steering angles toward particular side.   
+I rondomly chosed to flip image along y-axis and invert the steering angle. This reduced the bias in the steering angles toward particular side. 
+The track in simulater has more left curves more than rihgt one. I flipped the set of images with 50% probability. 
 
+###Training Process
 
-###Training
+The set of images was preprocessed by crop, resize, normalization, and filp. It was fed into the training model. 
+However this consumes large amount of memory. Hence python image generator was very useful for handling only a single batch size on memory at a time. 
+I used Adam optimizer because it tunes the learning rate automatically and we don't have to mannualy input and mean squared error for loss function. 
+Once the network is trained with mean squared error close to zero, the model definition and trained weights saved as json and h5 foramt. 
 
-I used Adam optimizer because it tunes the learning rate automatically and we don't have to mannualy input. I used mean squared error for loss function. 
-Usually network requires a large quantity of data. To load all of the data into memory exhaust the resources. The Kera data generator function allows to load data split by batch size per time. 
+Tuning parameters for Training:
+
+~~~
+batch_size = 128
+nb_epoch = 5
+~~~
+
+I ran the simulator in autonomous mode and started the driving server with the below command.
+
+~~~
+python drive.py model.json
+~~~
+
+###Output
+
+The driving server keeps sending the predicted steering angle to the car using the network. 
